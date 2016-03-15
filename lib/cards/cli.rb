@@ -9,7 +9,30 @@ class Cards::CLI
     title
     featured
     table
-    info(1)
+    puts ""
+    answer = ""
+    until answer == "n" do
+      puts "Would you like to learn more about a particular card? (y/n)"
+      puts "type 'list' if you wish to see the list again"
+      answer = gets.strip.downcase
+      if answer == "y"
+        input = ""
+        until (1..10).include? input do
+          puts "Please enter and ID number between 1 and 10"
+          input = gets.strip.to_i
+        end
+        info(input)
+      elsif answer == "n"
+        puts "\n- Come Back Soon -"
+        puts "source: www.comparecards.com"
+        puts "- Goodbye -"
+        puts ""
+      elsif answer == "list"
+        puts ""
+        list
+        puts ""
+      end
+    end         
   end
 
 

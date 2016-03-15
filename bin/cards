@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require "bundler/setup"
 require './lib/cards'
 
 Cards::CLI.new.call
