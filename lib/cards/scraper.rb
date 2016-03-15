@@ -36,6 +36,7 @@ class Cards::Scraper
     card_page = Nokogiri::HTML(open(href))
     puts "\n#{card_page.css(".head-contain h1").text.strip}".bold # Card Title
     puts "\n#{card_page.css("ul li.overall").text.strip}".white.bold # Rating
+    
     puts "\n#{card_page.css(".sec .title")[1].text}".blue.bold # Title "The Good"
     puts "#{card_page.css(".content .review")[1].text.strip}" # The Good
     puts "\n#{card_page.css(".sec .title")[2].text}".blue.bold # Tilte "The Not So Good"
