@@ -12,8 +12,8 @@ class Cards::CLI
     puts ""
     answer = ""
     until answer == "n" do
-      puts "Would you like to learn more about a particular card? (y/n)"
-      puts "type 'list' if you wish to see the list again"
+      puts "Would you like to learn more about a particular card? #{"(y/n)".bold}"
+      puts "type #{"list".bold} if you wish to see the list again"
       answer = gets.strip.downcase
       if answer == "y"
         input = ""
@@ -24,7 +24,7 @@ class Cards::CLI
         info(input)
       elsif answer == "n"
         puts "\n- Come Back Soon -"
-        puts "source: www.comparecards.com"
+        puts "source: www.comparecards.com".light_black
         puts "- Goodbye -"
         puts ""
       elsif answer == "list"
@@ -39,11 +39,11 @@ class Cards::CLI
   ################## CLI METHODS ##################
 
   def title
-    puts "\n ***** #{@cards_site.get_title} ***** "
+    puts "\n ***** #{@cards_site.get_title} ***** ".blue.bold
   end
 
   def featured
-    puts "\n >>Featured #{@cards.first.id}. #{@cards.first.name}"
+    puts "\n >> Featured ★ #{@cards.first.id}. #{@cards.first.name} ★".bold
     puts ""
   end
 

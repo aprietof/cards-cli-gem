@@ -34,14 +34,14 @@ class Cards::Scraper
     Cards::CreditCard.all.find {|card| href = card.href if card.id == card_id}
 
     card_page = Nokogiri::HTML(open(href))
-    puts "\n#{card_page.css(".head-contain h1").text.strip}" # Card Title
-    puts "\n#{card_page.css("ul li.overall").text.strip}" # Rating
-    puts "\n#{card_page.css(".sec .title")[1].text}" # Title "The Good"
-    puts "\n#{card_page.css(".content .review")[1].text.strip}" # The Good
-    puts "\n#{card_page.css(".sec .title")[2].text}" # Tilte "The Not So Good"
-    puts "\n#{card_page.css(".content .review")[2].text.strip}" # The Not So Good
-    puts "\n#{card_page.css(".sec .title")[0].text}" # Title "Bottom Line"
-    puts "\n#{card_page.css(".content .review")[0].text.strip}" # Bottom Line
+    puts "\n#{card_page.css(".head-contain h1").text.strip}".bold # Card Title
+    puts "\n#{card_page.css("ul li.overall").text.strip}".white.bold # Rating
+    puts "\n#{card_page.css(".sec .title")[1].text}".blue.bold # Title "The Good"
+    puts "#{card_page.css(".content .review")[1].text.strip}" # The Good
+    puts "\n#{card_page.css(".sec .title")[2].text}".blue.bold # Tilte "The Not So Good"
+    puts "#{card_page.css(".content .review")[2].text.strip}" # The Not So Good
+    puts "\n#{card_page.css(".sec .title")[0].text}".blue.bold # Title "Bottom Line"
+    puts "#{card_page.css(".content .review")[0].text.strip}" # Bottom Line
     puts ""
   end
 
