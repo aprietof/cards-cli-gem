@@ -6,9 +6,7 @@ class Cards::CLI
   end
 
   def call
-    title
-    featured
-    table
+    intro
     puts ""
     answer = ""
     until answer == "n" do
@@ -29,7 +27,7 @@ class Cards::CLI
         puts ""
       elsif answer == "list"
         puts ""
-        list
+        intro
         puts ""
       end
     end         
@@ -54,14 +52,13 @@ class Cards::CLI
     tp @cards[1..9], :id, :name, {:fees => {:width => 5}}, {:offer => {:width => 17}}, :credit_needed
   end
 
-  # Prints a list with **ONLY** the 10 best Credit Cards of the month
-  def list
+  def intro
     title
-    puts ""
-    @cards[0..9].each.with_index(1) {|card, i| puts "#{i}. #{card.name}"}
+    featured
+    table
   end
 
-  # Open a website to apply for a credit card given an CreditCard id number
+  # Opens a website to apply for a credit card given an CreditCard id number
   def apply(card_id)
     href = ""
     @cards.find {|card| href = card.apply_link if card.id == card_id}
