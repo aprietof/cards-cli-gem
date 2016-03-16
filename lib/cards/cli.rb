@@ -66,7 +66,7 @@ class Cards::CLI
   def info(card_id)
     @cards_site.get_info(card_id)
     input = ""
-    until ["y", "n", "yes", "no"].include? input do
+    until ["y", "n"].include? input do
       puts "Would you like to apply for this card #{"(y/n)".bold}?"
       input = gets.strip.downcase
       apply(card_id) if input == "y"
