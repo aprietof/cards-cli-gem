@@ -7,11 +7,10 @@ class Cards::CLI
 
   def call
     intro
-    puts ""
     answer = ""
-    until answer == "n" do
+    until answer == "n" || answer == "exit" do
+      puts "\nType #{"list".bold} if you wish to see the list again or #{"exit".red} to leave."
       puts "Would you like to learn more about a particular card? #{"(y/n)".bold}"
-      puts "type #{"list".bold} if you wish to see the list again"
       answer = gets.strip.downcase
       if answer == "y"
         input = ""
@@ -20,15 +19,13 @@ class Cards::CLI
           input = gets.strip.to_i
         end
         info(input)
-      elsif answer == "n"
+      elsif answer == "n" || answer == "exit"
         puts "\n- Come Back Soon -"
         puts "source: www.comparecards.com".light_black
         puts "- Goodbye -"
         puts ""
       elsif answer == "list"
-        puts ""
         intro
-        puts ""
       end
     end         
   end
@@ -69,8 +66,8 @@ class Cards::CLI
   def info(card_id)
     @cards_site.get_info(card_id)
     input = ""
-    until ["y", "n"].include? input do
-      puts "Would you like to apply for this card? (y/n)"
+    until ["y", "n", "yes", "no"].include? input do
+      puts "Would you like to apply for this card #{"(y/n)".bold}?"
       input = gets.strip.downcase
       apply(card_id) if input == "y"
     end
