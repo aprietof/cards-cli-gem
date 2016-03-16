@@ -34,7 +34,7 @@ class Cards::CLI
   end
 
 
-  ################## CLI METHODS ##################
+  ################################ CLI METHODS ##################################
 
   # Returns the title of the website
   def title
