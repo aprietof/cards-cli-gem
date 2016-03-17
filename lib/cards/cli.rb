@@ -9,21 +9,23 @@ class Cards::CLI
     intro
     answer = ""
     until answer == "n" || answer == "exit" do
-      puts "\nType #{"list".bold} if you wish to see the list again or #{"exit".red} to leave."
+      puts "\nType #{"list".bold} if you wish to see the list again or #{"exit".red} to exit the program."
       puts "Would you like to learn more about a particular card? #{"(y/n)".bold}"
       answer = gets.strip.downcase
       if answer == "y"
         input = ""
-        until (1..10).include? input do
-          puts "Please enter and ID number between 1 and 10"
-          input = gets.strip.to_i
+        until [(1..10).map(&:to_s), "exit"].flatten.include? input do
+          puts "Please enter and ID number #{"between 1 and 10".bold} or #{"exit".red} to exit the program."
+          input = gets.strip.downcase
         end
-        info(input)
+        if (1..10).map(&:to_s).include? input
+          info(input.to_i)
+        elsif input == "exit"
+          footer
+          break
+        end
       elsif answer == "n" || answer == "exit"
-        puts "\n- Come Back Soon -"
-        puts "source: www.comparecards.com".light_black
-        puts "- Goodbye -"
-        puts ""
+        footer
       elsif answer == "list"
         intro
       end
@@ -67,10 +69,17 @@ class Cards::CLI
     @cards_site.get_info(card_id)
     input = ""
     until ["y", "n"].include? input do
-      puts "Would you like to apply for this card #{"(y/n)".bold}?"
+      puts "Would you like to apply for this card? #{"(y/n)".bold}"
       input = gets.strip.downcase
       apply(card_id) if input == "y"
     end
+  end
+
+  def footer
+    puts "\n- Come Back Soon -"
+    puts "source: www.comparecards.com".light_black
+    puts "- Goodbye -"
+    puts ""
   end
 
 end
