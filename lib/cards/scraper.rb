@@ -30,12 +30,14 @@ class Cards::Scraper
 
   # Scrapes an individual CreditCard website and prints a document
   def get_info(card_id)
-    href = ""
-    Cards::CreditCard.all.find {|card| href = card.href if card.id == card_id}
+    credit_card  = ""
+    Cards::CreditCard.all.find {|card| credit_card = card if card.id == card_id}
 
-    card_page = Nokogiri::HTML(open(href))
+    card_page = Nokogiri::HTML(open(credit_card.href))
     puts "\n#{card_page.css(".head-contain h1").text.strip}".bold # Card Title
-    puts "\n#{card_page.css("ul li.overall").text.strip}".white.bold # Rating
+    puts "\nOffer: #{credit_card.offer}"
+    puts "Fees: #{credit_card.fees}"
+    puts "#{card_page.css("ul li.overall").text.strip}".white.bold # Rating
 
     puts "\n#{card_page.css(".sec .title")[1].text}".blue.bold # Title "The Good"
     puts "#{card_page.css(".content .review")[1].text.strip}" # The Good

@@ -42,7 +42,7 @@ class Cards::CLI
 
   # Returns the featured Credit Card of the month
   def featured
-    puts "\n >> Featured ★ #{@cards.first.id}. #{@cards.first.name} ★".bold
+    puts "\n >> Featured ★ #{@cards.first.id}.#{@cards.first.name}★".bold
     puts ""
   end
 
