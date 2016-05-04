@@ -9,8 +9,6 @@ require_relative "./cards/credit_card"
 require_relative "./cards/scraper"
 require_relative "./cards/cli"
 
-# require 'bundler'
-# Bundler.require
-#
-# require 'open-uri'
-# require_all 'lib'
+module Cards
+ # Your code goes here...
+end
