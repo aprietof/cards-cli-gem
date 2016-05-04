@@ -29,11 +29,11 @@ class Cards::CLI
       elsif answer == "list"
         intro
       end
-    end         
+    end
   end
 
 
-  ################################ CLI METHODS ##################################
+  ############## CLI METHODS ###############
 
   # Returns the title of the website
   def title
